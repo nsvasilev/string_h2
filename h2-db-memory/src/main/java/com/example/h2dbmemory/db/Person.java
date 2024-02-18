@@ -4,35 +4,36 @@ import jakarta.persistence.*;
 
 @Entity
 //@Table(name = "PERSON")
-public class Users {
+public class Person {
     @jakarta.persistence.Id
-    @GeneratedValue // Id генерируется автоматически
+    @GeneratedValue(strategy = GenerationType.AUTO) // Id генерируется автоматически
     @Column(name = "Id", nullable = false)
-    private long Id;
+    private Long id;
 
    @Column(name = "user_name")
     private String username ;
 
+    public Person(String username) {
+        this.username = username;
+    }
 
-//Создаем конструктор для корректной сервелизации
-    public Users() {
+    public Person() {
 
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String name) {
-        this.username = name;
-
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
